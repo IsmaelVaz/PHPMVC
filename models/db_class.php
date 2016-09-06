@@ -1,0 +1,34 @@
+<?php
+	class mysql_db{
+		
+		//Para criar atributos
+		public $server;
+		public $user;
+		public $password;
+		
+		//Para criar o construtor da class
+		public function __construct(){
+			//Atribuição na variavael
+			$this->server="localhost";
+			$this->user="root";
+			$this->password="bcd127";
+		}
+		//Metodos para abrir a conexão com o banco 
+		public function conectar(){
+			//Verifica se é possível realizar a conexão com o banco
+			if($this->con=mysqli_connect($this->server, $this->user, $this->password)){
+				mysqli_select_db("dbcontatos4t");//Seleciona o database
+			}else{
+				echo "Ferrou boy, vaza que ta feio.".mysqli_error();
+				die();//Mata a conexão para que não fique presa no sistema operacional
+			}
+		}
+		//Metodos para fechar a conexão com o banco 
+		public function desconectar(){
+			//Fecha a conexão com o banco
+			mysqli_close($this->con);
+		}
+	}
+
+
+?>
