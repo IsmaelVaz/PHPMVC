@@ -20,12 +20,18 @@
 			}
 		}
 		public function Novo(){
-			$contato = new Contato():
 			
+			//Intancia do model
+			$contato = new Contato();
+			
+			//Atribui os respectivos valores adquiridos
 			$contato->nome = $this->nome;
 			$contato->telefone = $this->telefone;
 			$contato->celular = $this->celular;
 			$contato->email = $this->email;
+			
+			//Chama o metodo da model para inserir
+			$contato::Insert($contato);
 			
 		}
 		public function Atualizar(){

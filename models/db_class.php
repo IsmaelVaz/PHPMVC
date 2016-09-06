@@ -5,6 +5,7 @@
 		public $server;
 		public $user;
 		public $password;
+		//public $con;
 		
 		//Para criar o construtor da class
 		public function __construct(){
@@ -16,17 +17,18 @@
 		//Metodos para abrir a conexão com o banco 
 		public function conectar(){
 			//Verifica se é possível realizar a conexão com o banco
-			if($this->con=mysqli_connect($this->server, $this->user, $this->password)){
-				mysqli_select_db("dbcontatos4t");//Seleciona o database
+			if($this->con=mysql_connect($this->server, $this->user, $this->password)){
+				mysql_select_db("dbcontatos4t");//Seleciona o database
+				//$this->server, $this->user, $this->password
 			}else{
-				echo "Ferrou boy, vaza que ta feio.".mysqli_error();
+				echo "Ferrou boy, vaza que ta feio.".mysql_error();
 				die();//Mata a conexão para que não fique presa no sistema operacional
 			}
 		}
 		//Metodos para fechar a conexão com o banco 
 		public function desconectar(){
 			//Fecha a conexão com o banco
-			mysqli_close($this->con);
+			mysql_close($this->con);
 		}
 	}
 
