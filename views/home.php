@@ -38,7 +38,6 @@
 					/*outra forma de incluir
 						include();
 					*/
-					
 				?>
 			</div>
 			<div class="rod">

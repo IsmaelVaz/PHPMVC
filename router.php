@@ -11,10 +11,19 @@
 			require_once("models/contato_class.php");
 			switch ($modo){
 				case 'novo':
-				
 					//Realizando instancia do objeto da controller
 					$controller_local = new ControllerContato();
+					break;
 				case 'atualizar':
+					$codigo = $_GET['codigo'];
+					$controller_local = new ControllerContato();
+					$controller_local::Buscar($codigo);
+					break;
+				case 'excluir':
+					$codigo = $_GET['codigo'];
+					$controller_local = new ControllerContato();
+					$controller_local::Excluir($codigo);
+					break;
 			}
 			break;
 	}

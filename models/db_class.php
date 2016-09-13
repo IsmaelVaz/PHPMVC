@@ -5,7 +5,6 @@
 		public $server;
 		public $user;
 		public $password;
-		//public $con;
 		
 		//Para criar o construtor da class
 		public function __construct(){
