@@ -13,6 +13,7 @@
 				case 'novo':
 					//Realizando instancia do objeto da controller
 					$controller_local = new ControllerContato();
+					$controller_local->Novo();
 					break;
 				case 'atualizar':
 					$codigo = $_GET['codigo'];
@@ -23,6 +24,14 @@
 					$codigo = $_GET['codigo'];
 					$controller_local = new ControllerContato();
 					$controller_local::Excluir($codigo);
+					break;
+					
+				case 'svatualizar':
+					//Realizando instancia do objeto da controller
+					//Passa o código pegado da URL para o metodo Atualizar
+					$codigo = $_GET['codigo'];
+					$controller_local = new ControllerContato();
+					$controller_local->Atualizar($codigo);
 					break;
 			}
 			break;

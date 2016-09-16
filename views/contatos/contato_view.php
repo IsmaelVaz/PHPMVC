@@ -3,15 +3,39 @@
 require_once("controllers/contatos_controller.php");
 require_once("models/contato_class.php");
 
-	$nome = $list->nome;
-	$telefone = $list->telefone;
-	$email = $list->email;
-	$celular = $list->celular;
-	$cod = $list->cod;
+	//Realiza a decisão para saber se é editar ou não
+	//caso seja, é pegado os dados que é passado no buscar da classe controller
+	if(isset($_GET['modo'])){
+		if($_GET['modo']  == 'atualizar'){
+			$nome = $list->nome;
+			$telefone = $list->telefone;
+			$email = $list->email;
+			$celular = $list->celular;
+			$cod = $list->cod;
+			
+			//muda o nome do botao para saber a ação
+			$btn='ATUALIZAR';
+			
+			//muda o nome do modo para saber se é para atualizar ou não
+			$modo='svatualizar';
+			
+			//Pega o código para passar na url e se pego no router
+			$codigo = $list->cod;
+		}
+	}else{
+		$nome = "";
+		$telefone ="";
+		$email = "";
+		$celular = "";
+		$cod = "";
+		$btn='SALVAR';
+		$modo='novo';
+	}
+	
 ?>
 
 <div class="principal">
-	<form action="router.php?controller=contatos&modo=novo" method="post" name="frmcontatos">
+	<form action="router.php?controller=contatos&modo=<?php echo $modo; ?>&codigo=<?php echo $codigo ?>" method="post" name="frmcontatos">
 		<table width="100%" border="1">
 			<caption> CADASTRO DE CONTATOS</caption>
 			<tr>
@@ -32,7 +56,7 @@ require_once("models/contato_class.php");
 			</tr>
 			<tr>
 				<td><input type="reset"  value="LIMPAR"/></td>
-				<td><input type="submit" name="btnSalvar" value="SALVAR"/></td>
+				<td><input type="submit" name="btnSalvar" value="<?php echo $btn; ?>"/></td>
 			</tr>
 		</table>
 	</form>

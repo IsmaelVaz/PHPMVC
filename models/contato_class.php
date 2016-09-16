@@ -1,5 +1,4 @@
 <?php 
-
 	class Contato{
 		
 		public $cod;
@@ -82,7 +81,7 @@
 			if($rs = mysql_fetch_array($query)){
 				
 				$listContato = new Contato();
-				
+			
 				$listContato -> cod = $rs['codigo'];
 				$listContato -> nome = $rs['nome'];
 				$listContato -> telefone = $rs['telefone'];

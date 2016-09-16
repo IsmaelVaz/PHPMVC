@@ -8,25 +8,12 @@
 		public function __construct(){
 			//Verifica qual metodo foi utilizado no form
 			if($_SERVER['REQUEST_METHOD'] == 'POST'){
-				if($_POST['btnSalvar'] = 'SALVAR'){
-					//Resgata os valores digitados
-					$this->nome=$_POST['txtNome'] ;
-					$this->telefone=$_POST['txtTelefone'];
-					$this->celular=$_POST['txtCelular'];
-					$this->email=$_POST['txtEmail'];
-					
-					//Chama o metodo para inserir um novo registro
-					$this->Novo();
-				}elseif($_POST['btnSalvar'] = 'ATUALIZAR'){
-					//Resgata os valores digitados
-					$this->nome=$_POST['txtNome'] ;
-					$this->telefone=$_POST['txtTelefone'];
-					$this->celular=$_POST['txtCelular'];
-					$this->email=$_POST['txtEmail'];
-					
-					//Chama o metodo para inserir um novo registro
-					$this->Atualizar();
-				}
+				
+				//Resgata os valores digitados
+				$this->nome=$_POST['txtNome'] ;
+				$this->telefone=$_POST['txtTelefone'];
+				$this->celular=$_POST['txtCelular'];
+				$this->email=$_POST['txtEmail'];
 				
 			}
 		}
@@ -45,12 +32,12 @@
 			$contato::Insert($contato);
 			
 		}
-		public function Atualizar(){
+		public function Atualizar($cod){
 			//Intancia do model
 			$contato = new Contato();
 			
 			//Atribui os respectivos valores adquiridos
-			$contato->cod = $_SESSION['cod'];
+			$contato->cod = $cod;
 			$contato->nome = $this->nome;
 			$contato->telefone = $this->telefone;
 			$contato->celular = $this->celular;
@@ -70,6 +57,8 @@
 		public function Buscar($cod){
 			$contato = new Contato();
 			$list= $contato::SelectById($cod);
+			
+			//Instancia a index para que a varialvel list passe a existir
 			require_once('index.php');
 		}
 	}
